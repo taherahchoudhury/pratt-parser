@@ -25,4 +25,4 @@ This is an application designed as a learning tool that visually depicts the pra
     ```
    
 ## Project Report
-[Download PDF] (report.pdf)
+[Download PDF] report.pdf
