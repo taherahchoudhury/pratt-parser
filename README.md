@@ -1,5 +1,5 @@
 
-# Visualisation of Pratt Parsing
+# Visualisation of Pratt Parsing (Final Year Project)
 
 ---
 
