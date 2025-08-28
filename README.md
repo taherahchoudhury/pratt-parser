@@ -27,5 +27,14 @@ This is an application designed as a learning tool that visually depicts the pra
 ## Project Report
 [Download PDF] https://github.com/taherahchoudhury/pratt-parser/raw/main/report.pdf
 
+## Demo
+You can run the compiled version of the project:
+
+1. Download the JAR named `pratt-parser.jar`.  
+2. Run it with Java:  
+```bash
+java -jar pratt-parser.jar
+
+
 
 
