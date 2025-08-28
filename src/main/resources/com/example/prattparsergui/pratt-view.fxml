@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prattparsergui.PrattController">
+   <children>
+      <ImageView fitHeight="610.0" fitWidth="805.0" pickOnBounds="true">
+         <image>
+            <Image url="@background-image.jpg" />
+         </image>
+      </ImageView>
+      <MenuBar fx:id="menuBar" layoutY="-2.0" prefHeight="28.0" prefWidth="800.0">
+        <menus>
+          <Menu fx:id="help" mnemonicParsing="false" text="Pratt Parser Visualiser" />
+        </menus>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </MenuBar>
+      <BorderPane fx:id="parserPane" prefHeight="600.0" prefWidth="806.0" visible="false">
+         <center>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="321.0" prefWidth="766.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="20.0" right="20.0" top="20.0" />
+               </BorderPane.margin>
+               <children>
+                  <Label fx:id="labelResult" alignment="CENTER" contentDisplay="CENTER" layoutY="166.0" prefHeight="18.0" prefWidth="766.0" text="pratt parser result" visible="false" />
+                  <TextArea fx:id="txtResult" editable="false" layoutX="2.0" layoutY="-4.0" prefHeight="328.0" prefWidth="590.0">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </TextArea>
+                  <TableView fx:id="tblOperators" layoutX="601.0" maxHeight="-Infinity" maxWidth="-Infinity" pickOnBounds="false" prefHeight="178.0" prefWidth="165.0">
+                    <columns>
+                      <TableColumn fx:id="tcOperators" editable="false" prefWidth="76.0" sortable="false" text="Operators" />
+                      <TableColumn fx:id="tcPrecedence" editable="false" prefWidth="85.0" sortable="false" text="Precedence" />
+                    </columns>
+                  </TableView>
+                  <TableView fx:id="tblResult" layoutX="1.0" prefHeight="322.0" prefWidth="590.0" visible="false">
+                    <columns>
+                      <TableColumn fx:id="tcTokens" editable="false" prefWidth="313.6000003814697" sortable="false" text="Tokens" />
+                      <TableColumn fx:id="tcToken" editable="false" minWidth="0.0" prefWidth="128.79998779296875" sortable="false" text="Current Token" />
+                        <TableColumn fx:id="tcOp" editable="false" prefWidth="145.60006713867188" sortable="false" text="Current Operator" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Button fx:id="btnTable" layoutX="601.0" layoutY="278.0" mnemonicParsing="false" onAction="#onBtnTableClick" prefHeight="44.0" prefWidth="166.0" text="Table View" />
+                  <Button fx:id="btnBranch" disable="true" layoutX="601.0" layoutY="206.0" mnemonicParsing="false" onAction="#onBtnBranchClick" prefHeight="44.0" prefWidth="166.0" text="Branch View" />
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <HBox prefHeight="48.0" prefWidth="806.0" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <AnchorPane prefHeight="197.0" prefWidth="802.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnBack" layoutX="14.0" layoutY="169.0" mnemonicParsing="false" onAction="#onBtnBackClick" prefHeight="26.0" prefWidth="141.0" text="Back" />
+                  <HBox alignment="CENTER" layoutX="22.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="56.0" prefWidth="593.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <AnchorPane prefHeight="55.0" prefWidth="574.0">
+                           <children>
+                              <Button fx:id="btnExecute" layoutX="237.0" mnemonicParsing="false" onAction="#onBtnExecuteClick" prefHeight="26.0" prefWidth="100.0" text="Start" />
+                              <Button fx:id="btnPrevious" disable="true" layoutX="159.0" mnemonicParsing="false" onAction="#onBtnPreviousClick" prefHeight="26.0" prefWidth="62.0" text="Previous" />
+                              <Button fx:id="btnNext" disable="true" layoutX="351.0" mnemonicParsing="false" onAction="#onBtnNextClick" prefHeight="26.0" prefWidth="62.0" text="Next" />
+                              <Button fx:id="btnFinish" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="516.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnFinishClick" prefHeight="26.0" prefWidth="62.0" text="Finish" />
+                              <Button fx:id="btnReset" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="-9.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnResetClick" prefHeight="26.0" prefWidth="62.0" text="Reset" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnResult" disable="true" layoutX="637.0" layoutY="169.0" mnemonicParsing="false" onAction="#onBtnResultClick" prefHeight="26.0" prefWidth="150.0" text="Parsed Expression" wrapText="true" />
+                  <ScrollPane fx:id="scollPane" fitToWidth="true" layoutX="22.0" layoutY="73.0" prefHeight="68.0" prefWidth="766.0">
+                     <content>
+                        <HBox prefHeight="66.0" prefWidth="765.0">
+                           <children>
+                              <Text fx:id="lblCurrentExp" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="750.9367408752441">
+                                 <font>
+                                    <Font name="Consolas" size="26.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="15.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" right="5.0" top="5.0" />
+               </BorderPane.margin>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="selectPane" layoutY="43.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="556.0" prefWidth="800.0">
+         <center>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="377.0" prefWidth="534.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="534.0" text="Input an expression">
+                     <font>
+                        <Font name="Corbel Light" size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <AnchorPane prefHeight="29.0" prefWidth="534.0">
+                     <children>
+                        <TextField fx:id="textField" layoutX="152.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#onEnter" onMouseClicked="#onTextFieldClick" prefHeight="26.0" prefWidth="230.0" />
+                     </children>
+                  </AnchorPane>
+                  <Label fx:id="labelExp" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="20.0" prefHeight="39.0" prefWidth="531.0" text="Select an expression">
+                     <font>
+                        <Font name="Corbel Light" size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <AnchorPane prefHeight="146.0" prefWidth="575.0">
+                     <children>
+                        <ListView fx:id="listOfExpressions" layoutX="155.0" layoutY="-3.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="167.0" prefWidth="224.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="58.0" prefWidth="534.0">
+                     <children>
+                        <Button fx:id="btnSelect" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="154.0" layoutY="31.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnSelectClick" prefHeight="30.0" prefWidth="226.0" text="Select">
+                           <font>
+                              <Font name="Corbel" size="14.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="18.0" prefWidth="526.0" text="error message" textFill="RED" visible="false" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
