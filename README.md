@@ -24,3 +24,5 @@ This is an application designed as a learning tool that visually depicts the pra
     java --module path [PATH TO JAVAFX LIB FILE] --add modules javafx.controls, javafx.fxml -jar [PATH TO JAR FILE]
     ```
    
+## Project Report
+[Download PDF] (report.pdf)
