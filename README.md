@@ -25,7 +25,7 @@ This is an application designed as a learning tool that visually depicts the pra
     ```
    
 ## Project Report
-https://github.com/taherahchoudhury/pratt-parser/blob/main/report.pdf
+[Download PDF] https://github.com/taherahchoudhury/pratt-parser/raw/main/report.pdf
 
 
 
